@@ -1,6 +1,6 @@
-const twoModule = () => {
+const two = () => {
   const moduleTitle = 'Two';
   console.log(moduleTitle);
 };
 
-module.exports = twoModule;
+export default two;
