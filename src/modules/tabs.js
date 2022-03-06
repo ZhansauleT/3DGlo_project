@@ -3,8 +3,9 @@ const tabs = () => {
   const tabs = document.querySelectorAll('.service-header-tab');
   const tabContent = document.querySelectorAll('.service-tab');
 
+
   tabPanel.addEventListener('click', (e) => {
-    if(e.target.closest('service-header-tab')){
+    if(e.target.closest('.service-header-tab')){
       const tabBtn = e.target.closest('.service-header-tab');
 
       tabs.forEach((tab, index) => {
@@ -13,7 +14,7 @@ const tabs = () => {
           tabContent[index].classList.remove('d-none');
         }else{
           tab.classList.remove('active');
-          tabContent[index].classList.remove('d-none');
+          tabContent[index].classList.add('d-none');
         }
       });
     }
