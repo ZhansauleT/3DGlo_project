@@ -7,26 +7,26 @@ const sendForm = ({formId, someElem = []}) => {
 
 
   const validate = (list) => {
-    let success = false;
+    let success = true;
 
-    list.forEach(input => {
+    // list.forEach(input => {
 
-      //to check name input
-      if(/[^а-яА-Я ]/g.test(input[name="user_name"].value)){
-        success = true;
-      }
+    //   //to check name input
+    //   if(/[^а-яА-Я ]/g.test(input[name="user_name"].value)){
+    //     success = true;
+    //   }
 
-      //to check phone input
-      if(/[^0-9()-+]/g.test(input[name="user_phone"].value)){
-        success = true;
-      }
+    //   //to check phone input
+    //   if(/[^0-9()-+]/g.test(input[name="user_phone"].value)){
+    //     success = true;
+    //   }
 
-      //to check message input
-      if(/[^а-яА-Я0-9 ,]/g.test(input[name="user_message"].value)){
-        success = true;
-      }
+    //   //to check message input
+    //   if(/[^а-яА-Я0-9 ,]/g.test(input[name="user_message"].value)){
+    //     success = true;
+    //   }
       
-    });
+    // });
 
     return success;
   };
@@ -47,8 +47,6 @@ const sendForm = ({formId, someElem = []}) => {
     const formData = new FormData();
     const formBody = {};
 
-    statusBlock.textContent = loadText;
-    form.append(statusBlock);
 
     formData.forEach((val, key) => {
       formBody[key] = val;
@@ -66,6 +64,10 @@ const sendForm = ({formId, someElem = []}) => {
     });
 
     if(validate(formElements)){
+
+      statusBlock.textContent = loadText;
+      form.append(statusBlock);
+
       sendData(formBody).then(data => {
         statusBlock.textContent = successText;
 

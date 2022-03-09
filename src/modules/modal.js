@@ -11,7 +11,7 @@ const modal = () => {
     btn.addEventListener('click', () => {
       modal.style.display = 'block';
       
-      console.log(innerWidth);
+      //console.log(innerWidth);
 
       if(innerWidth > 768){
         animate({
@@ -21,7 +21,7 @@ const modal = () => {
           },
           draw(progress) {
             modalWindow.style.top = progress * 25 + '%';
-            console.log(progress);
+            //console.log(progress);
           }
         });
       }

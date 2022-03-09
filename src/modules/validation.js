@@ -26,16 +26,14 @@ const validation = () => {
     if(/[^а-яА-Я -]/g.test(mainFormTextInput.value) || mainFormTextInput.value === ''){
       alert("Введите ваше имя на кириллице");
       mainFormTextInput.value = "";
-    }else{
-      console.log("no error");
     }
 
-    if(/[^a-zA-Z0-9@-_.!~*']/g.test(mainFormEmailInput.value) || mainFormTextInput.value === ''){
+    if(/[^a-zA-Z0-9@-_.!~*']/g.test(mainFormEmailInput.value) || mainFormEmailInput.value === ''){
       alert("Введите корректную адресную почту");
       mainFormEmailInput.value = "";
     }
 
-    if(/[^0-9()-]/g.test(mainFormNumberInput.value) && mainFormTextInput.value === ''){
+    if(/[^0-9()-]/g.test(mainFormNumberInput.value) || mainFormNumberInput.value === ''){
       alert("Введите корректный номер телефона");
       mainFormNumberInput.value = "";
     }
@@ -53,17 +51,17 @@ const validation = () => {
       footerFormTextInput.value = "";
     }
 
-    if(/[^a-zA-Z0-9@-_.!~*']/g.test(footerFormEmailInput.value) || footerFormTextInput.value === ''){
+    if(/[^a-zA-Z0-9@-_.!~*']/g.test(footerFormEmailInput.value) || footerFormEmailInput.value === ''){
       alert("Введите корректную адресную почту");
       footerFormEmailInput.value = "";
     }
 
-    if(/[^0-9()-]/g.test(footerFormNumberInput.value) || footerFormTextInput.value === ''){
+    if(/[^0-9()-]/g.test(footerFormNumberInput.value) || footerFormNumberInput.value === ''){
       alert("Введите корректный номер телефона");
       footerFormNumberInput.value = "";
     }
 
-    if(/[^а-яА-Я -]/g.test(footerFormMessageInput.value) || footerFormMessageInput.value === ''){
+    if(/[^а-яА-Я -]/g.test(footerFormMessageInput.value)){
       alert("Введите корректное сообщение");
       footerFormMessageInput.value = "";
     }
@@ -89,7 +87,7 @@ const validation = () => {
 
     if(/[^0-9()-]/g.test(modalWindowNumberInput.value) || modalWindowNumberInput.value === ''){
       alert("Введите корректный номер телефона");
-      mainFormNumberInput.value = "";
+      modalWindowNumberInput.value = "";
     }
 
   });

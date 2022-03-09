@@ -2,6 +2,7 @@ const timer = function(deadline){
   const timerHours = document.getElementById("timer-hours");
   const timerMinutes = document.getElementById("timer-minutes");
   const timerSeconds = document.getElementById("timer-seconds");
+  const timerAction = document.getElementsByClassName("timer-action")[0];
 
   
   const getTimeRemaining = () => {
@@ -17,6 +18,8 @@ const timer = function(deadline){
       hours = 0;
       minutes = 0;
       seconds = 0;
+
+      timerAction.textContent = "Акция закончилась...";
     }
 
     return { timeRemaning, hours, minutes, seconds };
@@ -25,17 +28,25 @@ const timer = function(deadline){
 
   const updateClock = () => {
     let getTime = getTimeRemaining();
-    
-    timerHours.textContent = getTime.hours;
-    timerMinutes.textContent = getTime.minutes;
-    timerSeconds.textContent = getTime.seconds;
 
-    if(getTimeRemaining === 0){
+    if(getTime.hours < 10){
       timerHours.textContent = "0"+getTime.hours;
-      timerMinutes.textContent = "00";
-      timerSeconds.textContent = "00";
+    }else{
+      timerHours.textContent = getTime.hours;
     }
-      
+
+    if(getTime.minutes < 10){
+      timerMinutes.textContent = "0"+getTime.minutes;
+    }else{
+      timerMinutes.textContent = getTime.minutes;
+    }
+
+    if(getTime.seconds < 10){
+      timerSeconds.textContent = "0"+getTime.seconds;
+    }else{
+      timerSeconds.textContent = getTime.seconds;
+    }
+
 
     if(getTime.timeRemaning > 0) {
       setTimeout(updateClock, 1000);
