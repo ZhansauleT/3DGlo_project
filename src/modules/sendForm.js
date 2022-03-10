@@ -1,5 +1,6 @@
 const sendForm = ({formId, someElem = []}) => {
   const form = document.getElementById(formId);
+
   const statusBlock = document.createElement("div");
   const loadText = "Загрузка...";
   const errorText = "Ошибка...";
@@ -9,24 +10,39 @@ const sendForm = ({formId, someElem = []}) => {
   const validate = (list) => {
     let success = true;
 
-    // list.forEach(input => {
+    list.forEach(input => {
+      //console.log(input.name);
 
-    //   //to check name input
-    //   if(/[^а-яА-Я ]/g.test(input[name="user_name"].value)){
-    //     success = true;
-    //   }
-
-    //   //to check phone input
-    //   if(/[^0-9()-+]/g.test(input[name="user_phone"].value)){
-    //     success = true;
-    //   }
-
-    //   //to check message input
-    //   if(/[^а-яА-Я0-9 ,]/g.test(input[name="user_message"].value)){
-    //     success = true;
-    //   }
+      //to check name input
+      if(input.name === "user_name" && (/[^а-яА-Я ]/g.test(input.value) || input.value === "")){
+        alert("Введите ваше имя на кириллице");
+        input.value = "";
+        success = false;
+      }
       
-    // });
+      //to check phone number input
+      if (input.name === "user_phone" && !(/\(?([0-9]{4})\)?([-]?)([0-9]{3})\2([0-9]{4})/g.test(input.value))){
+        alert("Введите корректный номер телефона: 11 цифр начиная с кода");
+        input.value = "";
+        success = false;
+      }
+
+      //to check email input
+      if (input.name === "user_email" && /[^a-zA-Z0-9@-_.!~*']/g.test(input.value)){
+        alert("Введите корректную адресную почту");
+        input.value = "";
+        success = false;
+      }
+
+
+      // to check message input
+      if(input.name === "user_message" && /[^а-яА-Я0-9 ,]/g.test(input.value)){
+        success = false;
+      } 
+      
+    });
+
+    //console.log(success);
 
     return success;
   };
@@ -42,9 +58,11 @@ const sendForm = ({formId, someElem = []}) => {
     }).then(res => res.json());
   };
 
+
+
   const submitForm = () => {
     const formElements = form.querySelectorAll('input');
-    const formData = new FormData();
+    const formData = new FormData(form);
     const formBody = {};
 
 
@@ -55,12 +73,11 @@ const sendForm = ({formId, someElem = []}) => {
     someElem.forEach(elem => {
       const element = document.getElementById(elem.id);
 
-      if(elem.type === 'block'){
+      if(elem.type === 'block' && element.textContent !== "0"){
         formBody[elem.id] = element.textContent;
-      }else if(elem.type === 'input'){
+      }else if(elem.type === 'input' && element.value !== 0){
         formBody[elem.id] = element.value;
       }
-      //console.log(elem);
     });
 
     if(validate(formElements)){
@@ -74,6 +91,8 @@ const sendForm = ({formId, someElem = []}) => {
         formElements.forEach(input => {
           input.value = '';
         });
+
+        form.remove(statusBlock);
       })
       .catch(error => {
         statusBlock.textContent = errorText;

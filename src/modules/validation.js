@@ -23,20 +23,20 @@ const validation = () => {
     e.preventDefault();
     //let isError = false;
 
-    if(/[^а-яА-Я -]/g.test(mainFormTextInput.value) || mainFormTextInput.value === ''){
-      alert("Введите ваше имя на кириллице");
-      mainFormTextInput.value = "";
-    }
+    // if(/[^а-яА-Я -]/g.test(mainFormTextInput.value) || mainFormTextInput.value === ''){
+    //   alert("Введите ваше имя на кириллице");
+    //   mainFormTextInput.value = "";
+    // }
 
-    if(/[^a-zA-Z0-9@-_.!~*']/g.test(mainFormEmailInput.value) || mainFormEmailInput.value === ''){
-      alert("Введите корректную адресную почту");
-      mainFormEmailInput.value = "";
-    }
+    // if(/[^a-zA-Z0-9@-_.!~*']/g.test(mainFormEmailInput.value) || mainFormEmailInput.value === ''){
+    //   alert("Введите корректную адресную почту");
+    //   mainFormEmailInput.value = "";
+    // }
 
-    if(/[^0-9()-]/g.test(mainFormNumberInput.value) || mainFormNumberInput.value === ''){
-      alert("Введите корректный номер телефона");
-      mainFormNumberInput.value = "";
-    }
+    // if(/[^0-9()-]/g.test(mainFormNumberInput.value) || mainFormNumberInput.value === ''){
+    //   alert("Введите корректный номер телефона");
+    //   mainFormNumberInput.value = "";
+    // }
 
   });
 
