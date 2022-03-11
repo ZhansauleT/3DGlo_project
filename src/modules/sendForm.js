@@ -1,6 +1,7 @@
 const sendForm = ({formId, someElem = []}) => {
   const form = document.getElementById(formId);
 
+
   const statusBlock = document.createElement("div");
   const loadText = "Загрузка...";
   const errorText = "Ошибка...";
@@ -83,6 +84,8 @@ const sendForm = ({formId, someElem = []}) => {
     if(validate(formElements)){
 
       statusBlock.textContent = loadText;
+      statusBlock.style.color = "#fff";
+
       form.append(statusBlock);
 
       sendData(formBody).then(data => {
