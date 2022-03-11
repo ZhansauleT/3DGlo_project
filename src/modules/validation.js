@@ -19,8 +19,8 @@ const validation = () => {
   const modalWindowEmailInput = modalWindowForm.querySelector('input[type=email]');
 
 
-  mainForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+  //mainForm.addEventListener('submit', (e) => {
+    //e.preventDefault();
     //let isError = false;
 
     // if(/[^а-яА-Я -]/g.test(mainFormTextInput.value) || mainFormTextInput.value === ''){
@@ -38,59 +38,59 @@ const validation = () => {
     //   mainFormNumberInput.value = "";
     // }
 
-  });
+  //});
 
 
   // footer form validation
-  footerForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    //let isError = false;
+  // footerForm.addEventListener('submit', (e) => {
+  //   e.preventDefault();
+  //   //let isError = false;
 
-    if(/[^а-яА-Я -]/g.test(footerFormTextInput.value) || footerFormTextInput.value === ''){
-      alert("Введите ваше имя на кириллице");
-      footerFormTextInput.value = "";
-    }
+  //   if(/[^а-яА-Я -]/g.test(footerFormTextInput.value) || footerFormTextInput.value === ''){
+  //     alert("Введите ваше имя на кириллице");
+  //     footerFormTextInput.value = "";
+  //   }
 
-    if(/[^a-zA-Z0-9@-_.!~*']/g.test(footerFormEmailInput.value) || footerFormEmailInput.value === ''){
-      alert("Введите корректную адресную почту");
-      footerFormEmailInput.value = "";
-    }
+  //   if(/[^a-zA-Z0-9@-_.!~*']/g.test(footerFormEmailInput.value) || footerFormEmailInput.value === ''){
+  //     alert("Введите корректную адресную почту");
+  //     footerFormEmailInput.value = "";
+  //   }
 
-    if(/[^0-9()-]/g.test(footerFormNumberInput.value) || footerFormNumberInput.value === ''){
-      alert("Введите корректный номер телефона");
-      footerFormNumberInput.value = "";
-    }
+  //   if(/[^0-9()-]/g.test(footerFormNumberInput.value) || footerFormNumberInput.value === ''){
+  //     alert("Введите корректный номер телефона");
+  //     footerFormNumberInput.value = "";
+  //   }
 
-    if(/[^а-яА-Я -]/g.test(footerFormMessageInput.value)){
-      alert("Введите корректное сообщение");
-      footerFormMessageInput.value = "";
-    }
+  //   if(/[^а-яА-Я -]/g.test(footerFormMessageInput.value)){
+  //     alert("Введите корректное сообщение");
+  //     footerFormMessageInput.value = "";
+  //   }
 
-  });
+  // });
 
 
-  //modal window form validation
+  // //modal window form validation
 
-  modalWindowForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    //let isError = false;
+  // modalWindowForm.addEventListener('submit', (e) => {
+  //   e.preventDefault();
+  //   //let isError = false;
 
-    if(/[^а-яА-Я -]/g.test(modalWindowTextInput.value) || modalWindowTextInput.value === ''){
-      alert("Введите ваше имя на кириллице");
-      modalWindowTextInput.value = "";
-    }
+  //   if(/[^а-яА-Я -]/g.test(modalWindowTextInput.value) || modalWindowTextInput.value === ''){
+  //     alert("Введите ваше имя на кириллице");
+  //     modalWindowTextInput.value = "";
+  //   }
 
-    if(/[^a-zA-Z0-9@-_.!~*']/g.test(modalWindowEmailInput.value) || modalWindowEmailInput.value === ''){
-      alert("Введите корректную адресную почту");
-      modalWindowEmailInput.value = "";
-    }
+  //   if(/[^a-zA-Z0-9@-_.!~*']/g.test(modalWindowEmailInput.value) || modalWindowEmailInput.value === ''){
+  //     alert("Введите корректную адресную почту");
+  //     modalWindowEmailInput.value = "";
+  //   }
 
-    if(/[^0-9()-]/g.test(modalWindowNumberInput.value) || modalWindowNumberInput.value === ''){
-      alert("Введите корректный номер телефона");
-      modalWindowNumberInput.value = "";
-    }
+  //   if(/[^0-9()-]/g.test(modalWindowNumberInput.value) || modalWindowNumberInput.value === ''){
+  //     alert("Введите корректный номер телефона");
+  //     modalWindowNumberInput.value = "";
+  //   }
 
-  });
+  // });
 
 
 

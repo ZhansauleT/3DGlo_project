@@ -12,26 +12,22 @@ const sendForm = ({formId, someElem = []}) => {
     let success = true;
 
     list.forEach(input => {
-      //console.log(input.name);
 
       //to check name input
       if(input.name === "user_name" && (/[^а-яА-Я ]/g.test(input.value) || input.value === "")){
         alert("Введите ваше имя на кириллице");
-        input.value = "";
         success = false;
       }
       
       //to check phone number input
-      if (input.name === "user_phone" && !(/\(?([0-9]{4})\)?([-]?)([0-9]{3})\2([0-9]{4})/g.test(input.value))){
+      if (input.name === "user_phone" && (!(/^[\+]?\(?([0-9]{4})\)?([-]?)([0-9]{3})\2([0-9]{4})+$/g.test(input.value)) || input.value === "")){
         alert("Введите корректный номер телефона: 11 цифр начиная с кода");
-        input.value = "";
         success = false;
       }
 
       //to check email input
-      if (input.name === "user_email" && /[^a-zA-Z0-9@-_.!~*']/g.test(input.value)){
+      if (input.name === "user_email" && (/[^a-zA-Z0-9@-_.!~*']/g.test(input.value) || input.value === "")){
         alert("Введите корректную адресную почту");
-        input.value = "";
         success = false;
       }
 
@@ -42,8 +38,6 @@ const sendForm = ({formId, someElem = []}) => {
       } 
       
     });
-
-    //console.log(success);
 
     return success;
   };
@@ -95,7 +89,10 @@ const sendForm = ({formId, someElem = []}) => {
           input.value = '';
         });
 
-        form.remove(statusBlock);
+        setTimeout( () => {
+          form.removeChild(statusBlock);
+        }, 2000);
+
       })
       .catch(error => {
         statusBlock.textContent = errorText;
@@ -103,6 +100,7 @@ const sendForm = ({formId, someElem = []}) => {
     } else {
       alert('Данные не валидны!!!');
     }
+
   };
 
   try {
