@@ -19,89 +19,139 @@ const validation = () => {
   const modalWindowEmailInput = modalWindowForm.querySelector('input[type=email]');
 
 
-  //mainForm.addEventListener('submit', (e) => {
-    //e.preventDefault();
-    //let isError = false;
+  //main form validation
+  mainFormTextInput.addEventListener('input', (e) => {
+    e.preventDefault();
+    e.target.value = e.target.value.replace(/[^а-яА-Я -]/g,"");
+  });
 
-    // if(/[^а-яА-Я -]/g.test(mainFormTextInput.value) || mainFormTextInput.value === ''){
-    //   alert("Введите ваше имя на кириллице");
-    //   mainFormTextInput.value = "";
-    // }
-
-    // if(/[^a-zA-Z0-9@-_.!~*']/g.test(mainFormEmailInput.value) || mainFormEmailInput.value === ''){
-    //   alert("Введите корректную адресную почту");
-    //   mainFormEmailInput.value = "";
-    // }
-
-    // if(/[^0-9()-]/g.test(mainFormNumberInput.value) || mainFormNumberInput.value === ''){
-    //   alert("Введите корректный номер телефона");
-    //   mainFormNumberInput.value = "";
-    // }
-
-  //});
+  mainFormTextInput.addEventListener('blur', (e) => {
+    e.target.value = e.target.value.replace(/ +/g," ");
+    e.target.value = e.target.value.replace(/\-+/g,"-");
+    e.target.value = e.target.value.replace(/^(-)|^( )|[ ]$|[-]$/g,"");
+    e.target.value = e.target.value.replace(/^[а-я](?=[а-я]{2})/g, function(letter) {
+    return letter.toUpperCase(); });
+  });
 
 
-  // footer form validation
-  // footerForm.addEventListener('submit', (e) => {
-  //   e.preventDefault();
-  //   //let isError = false;
+  mainFormNumberInput.addEventListener('input', (e) => {
+    e.preventDefault();
+    e.target.value = e.target.value.replace(/[^0-9()+-]/g,"");
+  });
 
-  //   if(/[^а-яА-Я -]/g.test(footerFormTextInput.value) || footerFormTextInput.value === ''){
-  //     alert("Введите ваше имя на кириллице");
-  //     footerFormTextInput.value = "";
-  //   }
+  mainFormNumberInput.addEventListener('blur', (e) => {
+    e.target.value = e.target.value.replace(/\-+/g,"-");
+    e.target.value = e.target.value.replace(/\++/g,"+");
+    e.target.value = e.target.value.replace(/^(-)|[+]$|[(]$|[)]$|[-]$/g,"");
+  });
 
-  //   if(/[^a-zA-Z0-9@-_.!~*']/g.test(footerFormEmailInput.value) || footerFormEmailInput.value === ''){
-  //     alert("Введите корректную адресную почту");
-  //     footerFormEmailInput.value = "";
-  //   }
+  mainFormEmailInput.addEventListener('input', (e) => {
+    e.preventDefault();
+    e.target.value = e.target.value.replace(/[^a-zA-Z0-9@_.!~*'-]/g,"");
+  });
 
-  //   if(/[^0-9()-]/g.test(footerFormNumberInput.value) || footerFormNumberInput.value === ''){
-  //     alert("Введите корректный номер телефона");
-  //     footerFormNumberInput.value = "";
-  //   }
+  mainFormEmailInput.addEventListener('blur', (e) => {
+    e.target.value = e.target.value.replace(/\@+/g,"@");
+    e.target.value = e.target.value.replace(/\.+/g,".");
+    e.target.value = e.target.value.replace(/^(-)|[-]$/g,"");
+  });
 
-  //   if(/[^а-яА-Я -]/g.test(footerFormMessageInput.value)){
-  //     alert("Введите корректное сообщение");
-  //     footerFormMessageInput.value = "";
-  //   }
+  
 
-  // });
+  //footer form validation
+
+  footerFormTextInput.addEventListener('input', (e) => {
+    e.preventDefault();
+    e.target.value = e.target.value.replace(/[^а-яА-Я -]/g,"");
+  });
+
+  footerFormTextInput.addEventListener('blur', (e) => {
+    e.target.value = e.target.value.replace(/ +/g," ");
+    e.target.value = e.target.value.replace(/\-+/g,"-");
+    e.target.value = e.target.value.replace(/^(-)|^( )|[ ]$|[-]$/g,"");
+    e.target.value = e.target.value.replace(/^[а-я](?=[а-я]{2})/g, function(letter) {
+    return letter.toUpperCase(); });
+  });
+
+  footerFormNumberInput.addEventListener('input', (e) => {
+    e.preventDefault();
+    e.target.value = e.target.value.replace(/[^0-9()+-]/g,"");
+  });
+
+  footerFormNumberInput.addEventListener('blur', (e) => {
+    e.target.value = e.target.value.replace(/\-+/g,"-");
+    e.target.value = e.target.value.replace(/\++/g,"+");
+    e.target.value = e.target.value.replace(/\)+/g,")");
+    e.target.value = e.target.value.replace(/\(+/g,"(");
+    e.target.value = e.target.value.replace(/^(-)|[+]$|[(]$|[)]$|[-]$/g,"");
+  });
+
+  footerFormEmailInput.addEventListener('input', (e) => {
+    e.preventDefault();
+    e.target.value = e.target.value.replace(/[^a-zA-Z0-9@_.!~*'-]/g,"");
+  });
+
+  footerFormEmailInput.addEventListener('blur', (e) => {
+    e.target.value = e.target.value.replace(/\@+/g,"@");
+    e.target.value = e.target.value.replace(/\.+/g,".");
+    e.target.value = e.target.value.replace(/\-+/g,"-");
+    e.target.value = e.target.value.replace(/^(-)|[.]$|[-]$/g,"");
+  });
+
+  footerFormMessageInput.addEventListener('input', (e) => {
+    e.preventDefault();
+    e.target.value = e.target.value.replace(/[^а-яА-Я -]/g,"");
+  });
+
+  footerFormMessageInput.addEventListener('blur', (e) => {
+    e.target.value = e.target.value.replace(/ +/g," ");
+    e.target.value = e.target.value.replace(/\-+/g,"-");
+    e.target.value = e.target.value.replace(/^(-)|^( )|[ ]$|[-]$/g,"");
+  });
 
 
-  // //modal window form validation
+  //modal window form validation
+  modalWindowTextInput.addEventListener('input', (e) => {
+    e.preventDefault();
+    e.target.value = e.target.value.replace(/[^а-яА-Я -]/g,"");
+  });
 
-  // modalWindowForm.addEventListener('submit', (e) => {
-  //   e.preventDefault();
-  //   //let isError = false;
+  modalWindowTextInput.addEventListener('blur', (e) => {
+    e.target.value = e.target.value.replace(/ +/g," ");
+    e.target.value = e.target.value.replace(/\-+/g,"-");
+    e.target.value = e.target.value.replace(/^(-)|^( )|[ ]$|[-]$/g,"");
+    e.target.value = e.target.value.replace(/^[а-я](?=[а-я]{2})/g, function(letter) {
+    return letter.toUpperCase(); });
+  });
 
-  //   if(/[^а-яА-Я -]/g.test(modalWindowTextInput.value) || modalWindowTextInput.value === ''){
-  //     alert("Введите ваше имя на кириллице");
-  //     modalWindowTextInput.value = "";
-  //   }
+  modalWindowNumberInput.addEventListener('input', (e) => {
+    e.preventDefault();
+    e.target.value = e.target.value.replace(/[^0-9()+-]/g,"");
+  });
 
-  //   if(/[^a-zA-Z0-9@-_.!~*']/g.test(modalWindowEmailInput.value) || modalWindowEmailInput.value === ''){
-  //     alert("Введите корректную адресную почту");
-  //     modalWindowEmailInput.value = "";
-  //   }
+  modalWindowNumberInput.addEventListener('blur', (e) => {
+    e.target.value = e.target.value.replace(/\-+/g,"-");
+    e.target.value = e.target.value.replace(/\++/g,"+");
+    e.target.value = e.target.value.replace(/^(-)|[+]$|[(]$|[)]$|[-]$/g,"");
+  });
 
-  //   if(/[^0-9()-]/g.test(modalWindowNumberInput.value) || modalWindowNumberInput.value === ''){
-  //     alert("Введите корректный номер телефона");
-  //     modalWindowNumberInput.value = "";
-  //   }
+  modalWindowEmailInput.addEventListener('input', (e) => {
+    e.preventDefault();
+    e.target.value = e.target.value.replace(/[^a-zA-Z0-9@_.!~*'-]/g,"");
+  });
 
-  // });
-
+  modalWindowEmailInput.addEventListener('blur', (e) => {
+    e.target.value = e.target.value.replace(/\@+/g,"@");
+    e.target.value = e.target.value.replace(/\.+/g,".");
+    e.target.value = e.target.value.replace(/\-+/g,"-");
+    e.target.value = e.target.value.replace(/^(-)|[-]$/g,"");
+  });
 
 
   calcItems.forEach(calcItem => {
     calcItem.addEventListener('input', (e) => {
       e.preventDefault();
-      
-      if(/[^0-9]/g.test(calcItem.value)){
-        alert("Вписывать нужно только цифры!");
-        calcItem.value = "";
-      }
+      e.target.value = e.target.value.replace(/[^0-9]/g,"");
     });
   });
   
