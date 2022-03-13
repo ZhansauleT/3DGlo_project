@@ -29,10 +29,13 @@ const validation = () => {
     e.target.value = e.target.value.replace(/ +/g," ");
     e.target.value = e.target.value.replace(/\-+/g,"-");
     e.target.value = e.target.value.replace(/^(-)|^( )|[ ]$|[-]$/g,"");
-    e.target.value = e.target.value.replace(/^[а-я](?=[а-я]{2})/g, function(letter) {
+    e.target.value = e.target.value.replace(/^[а-я]/g, function(letter) {
     return letter.toUpperCase(); });
+    e.target.value = e.target.value.replace(/(?!^)[А-Я]/g, function(letter) {
+    return letter.toLowerCase(); });
   });
 
+  //(?=[а-я]{2})
 
   mainFormNumberInput.addEventListener('input', (e) => {
     e.preventDefault();
@@ -69,8 +72,10 @@ const validation = () => {
     e.target.value = e.target.value.replace(/ +/g," ");
     e.target.value = e.target.value.replace(/\-+/g,"-");
     e.target.value = e.target.value.replace(/^(-)|^( )|[ ]$|[-]$/g,"");
-    e.target.value = e.target.value.replace(/^[а-я](?=[а-я]{2})/g, function(letter) {
+    e.target.value = e.target.value.replace(/^[а-я]/g, function(letter) {
     return letter.toUpperCase(); });
+    e.target.value = e.target.value.replace(/(?!^)[А-Я]/g, function(letter) {
+    return letter.toLowerCase(); });
   });
 
   footerFormNumberInput.addEventListener('input', (e) => {
@@ -100,13 +105,13 @@ const validation = () => {
 
   footerFormMessageInput.addEventListener('input', (e) => {
     e.preventDefault();
-    e.target.value = e.target.value.replace(/[^а-яА-Я -]/g,"");
+    e.target.value = e.target.value.replace(/[^а-яА-Я -,]/g,"");
   });
 
   footerFormMessageInput.addEventListener('blur', (e) => {
     e.target.value = e.target.value.replace(/ +/g," ");
     e.target.value = e.target.value.replace(/\-+/g,"-");
-    e.target.value = e.target.value.replace(/^(-)|^( )|[ ]$|[-]$/g,"");
+    e.target.value = e.target.value.replace(/^(-)|^( )|^(,)|[ ]$|[-]$/g,"");
   });
 
 
@@ -120,8 +125,10 @@ const validation = () => {
     e.target.value = e.target.value.replace(/ +/g," ");
     e.target.value = e.target.value.replace(/\-+/g,"-");
     e.target.value = e.target.value.replace(/^(-)|^( )|[ ]$|[-]$/g,"");
-    e.target.value = e.target.value.replace(/^[а-я](?=[а-я]{2})/g, function(letter) {
+    e.target.value = e.target.value.replace(/^[а-я]/g, function(letter) {
     return letter.toUpperCase(); });
+    e.target.value = e.target.value.replace(/(?!^)[А-Я]/g, function(letter) {
+    return letter.toLowerCase(); });
   });
 
   modalWindowNumberInput.addEventListener('input', (e) => {

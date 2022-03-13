@@ -13,9 +13,10 @@ const sendForm = ({formId, someElem = []}) => {
 
     list.forEach(input => {
 
+
       //to check name input
-      if(input.name === "user_name" && (/[^а-яА-Я ]/g.test(input.value) || input.value === "")){
-        alert("Введите ваше имя на кириллице");
+      if(input.name === "user_name" && (/[^а-яА-Я ]/g.test(input.value) || input.value === "" ||input.value.length < 2)){
+        alert("Введите ваше имя на кириллице, имя должно состоять минимум из двух букв");
         success = false;
       }
       
@@ -33,7 +34,7 @@ const sendForm = ({formId, someElem = []}) => {
 
 
       // to check message input
-      if(input.name === "user_message" && /[^а-яА-Я0-9 ,]/g.test(input.value)){
+      if(input.name === "user_message" && /[^а-яА-Я0-9 -,]/g.test(input.value)){
         success = false;
       } 
       
